@@ -4,15 +4,14 @@ A personal portfolio website showcasing projects, skills, and contact informatio
 
 ## Features
 
-- Landing page with hero, skills, and projects sections
-- Responsive layout and smooth scroll
-- Lightweight animations with Framer Motion
+- Minimal landing page with profile, capabilities, and selected projects
+- Dedicated project index at `/projects`
+- Responsive document-style layout with system light and dark themes
 
 ## Tech stack
 
 - Next.js (React)
-- Tailwind CSS
-- Framer Motion
+- Tailwind CSS and custom CSS
 - TypeScript
 
 ## Local development
@@ -41,10 +40,7 @@ npm start
 ## Project structure (important files)
 
 - `app/page.tsx` — main landing page
-- `components/AboutSection.tsx` — About / Tools & Technologies section
-- `components/HeroSection.tsx` — Hero / landing header
-- `components/ProjectsSection.tsx` — Projects preview
-- `app/about/page.tsx` — full skills page
+- `components/ProjectsSection.tsx` — shared project index
 - `app/projects/page.tsx` — projects listing
 
 ## Project structure (full)
@@ -61,32 +57,21 @@ app/
 	globals.css
 	layout.tsx
 	page.tsx
-	about/
-		page.tsx
-	feed/
-		page.tsx
 	projects/
 		page.tsx
 components/
-	AboutSection.tsx
-	CustomCursor.tsx
 	Footer.tsx
-	HeroSection.tsx
-	MenuOverlay.tsx
 	Navbar.tsx
 	ProjectsSection.tsx
-	SmoothScroll.tsx
 data/
-	feed.ts
 	projects.ts
 public/
-	fonts/
-		bitcount-pop-double/
+	profile.jpg
 ```
 
 ## Notes
 
-- Fonts are self-hosted and configured in the project.
-- Styling utilities live in `app/globals.css` and `tailwind.config.ts`.
+- The portrait is sourced from the repository owner's public GitHub profile.
+- Shared design tokens and responsive styling live in `app/globals.css`.
 
 If you want the README expanded (development tips, deployment steps, or contributor guidelines), tell me what to include and I will update it.
