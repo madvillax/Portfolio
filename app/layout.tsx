@@ -15,10 +15,7 @@ const themeScript = `
 `;
 
 export const metadata: Metadata = {
-    title: {
-        default: "Mohit Sharma | AI Full-stack Developer",
-        template: "%s | Mohit Sharma",
-    },
+    title: "Mohit Sharma",
     description:
         "Mohit Sharma builds useful AI products and thoughtful full-stack systems.",
     openGraph: {
@@ -33,7 +30,7 @@ export const viewport: Viewport = {
     colorScheme: "dark light",
     themeColor: [
         { media: "(prefers-color-scheme: dark)", color: "#131313" },
-        { media: "(prefers-color-scheme: light)", color: "#f6f7f9" },
+        { media: "(prefers-color-scheme: light)", color: "#f3eee3" },
     ],
 };
 
