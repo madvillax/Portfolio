@@ -1,76 +1,82 @@
-import Image from "next/image";
 import Link from "next/link";
 import ProjectsSection from "@/components/ProjectsSection";
 
-const capabilities = [
-    "AI product engineering",
-    "Full-stack web applications",
-    "Agent systems and workflows",
-    "Product-minded frontend development",
+const stack = [
+    { label: "Core", tools: "TypeScript, Python, React, Next.js" },
+    { label: "Backend", tools: "Node.js, Express, FastAPI, SQLite, Firestore" },
+    { label: "AI systems", tools: "Gemini, machine learning, agent workflows" },
+    { label: "Interface", tools: "Tailwind CSS, Globe.gl, Google Maps API" },
+];
+
+const socialLinks = [
+    { label: "GitHub", href: "https://github.com/madvillax" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/mohit-sharma-432939271" },
+    { label: "X", href: "https://x.com/madvillax" },
+    { label: "Email", href: "mailto:mohit.sharma80805@gmail.com" },
 ];
 
 export default function Home() {
     return (
-        <div className="page-shell page-content">
-            <section className="hero" aria-labelledby="intro-title">
-                <Image
-                    className="profile-image"
-                    src="/profile.jpg"
-                    alt="Mohit Sharma's profile artwork"
-                    width={112}
-                    height={112}
-                    priority
-                />
+        <div className="page-content">
+            <section className="hero-section section-boundary" aria-labelledby="intro-title">
+                <h1 id="intro-title">I turn AI product ideas into dependable software.</h1>
 
-                <h1 id="intro-title">
-                    Hi, I&apos;m Mohit. I build useful AI products and full-stack systems.
-                </h1>
+                <ul className="hero-points">
+                    <li>I build AI-native products and agent systems end to end with TypeScript, Python, and Next.js.</li>
+                    <li>I work across orchestration, APIs, product interfaces, and deployment.</li>
+                    <li>I care about software that stays useful after the demo.</li>
+                </ul>
+
                 <p className="hero-summary">
-                    I turn ambitious ideas into clear, dependable software from model orchestration to the final interface.
+                    I can help scope the product, build the first version, or take ownership of the next stage.
                 </p>
 
-                <div className="hero-links" aria-label="Introduction links">
-                    <Link className="primary-link" href="/projects">
-                        See my projects <span aria-hidden="true">→</span>
-                    </Link>
-                    <a className="text-link" href="mailto:mohit.sharma80805@gmail.com">
-                        Start a conversation
-                    </a>
-                </div>
-            </section>
-
-            <section className="content-section about-grid" aria-labelledby="about-title">
-                <div>
-                    <div className="section-heading">
-                        <span aria-hidden="true">##</span>
-                        <h2 id="about-title">About</h2>
-                    </div>
-                    <p className="body-copy">
-                        I work across the stack, with a focus on AI-native products that feel practical, fast, and easy to use. I care about clean APIs, thoughtful interfaces, and systems that hold up beyond the demo.
-                    </p>
-                    <p className="location-note">Based in New Delhi, India. Open to remote collaboration.</p>
+                <div className="hero-actions">
+                    <Link className="button button-primary" href="/projects">View projects</Link>
+                    <a className="button button-secondary" href="mailto:mohit.sharma80805@gmail.com">Email me</a>
+                    <span className="availability"><span aria-hidden="true" />Open to remote work</span>
                 </div>
 
-                <div className="capability-block">
-                    <h3>What I work on</h3>
-                    <ul>
-                        {capabilities.map((capability) => (
-                            <li key={capability}>{capability}</li>
-                        ))}
-                    </ul>
-                </div>
+                <nav className="social-links" aria-label="Social links">
+                    {socialLinks.map((link) => (
+                        <a
+                            key={link.label}
+                            href={link.href}
+                            target={link.href.startsWith("http") ? "_blank" : undefined}
+                            rel={link.href.startsWith("http") ? "noreferrer" : undefined}
+                        >
+                            {link.label}<span aria-hidden="true">↗</span>
+                        </a>
+                    ))}
+                </nav>
             </section>
 
             <ProjectsSection />
 
-            <section className="contact-section" aria-labelledby="contact-title">
-                <div className="section-heading">
-                    <span aria-hidden="true">##</span>
-                    <h2 id="contact-title">Contact</h2>
+            <section className="stack-section section-boundary" aria-labelledby="stack-title">
+                <div className="section-title-row">
+                    <span className="section-mark" aria-hidden="true">+</span>
+                    <div>
+                        <h2 id="stack-title">Working stack</h2>
+                        <p>Tools I use to move from idea to shipped product.</p>
+                    </div>
                 </div>
-                <p>Have a product idea, an AI integration challenge, or a role in mind?</p>
-                <a className="contact-email" href="mailto:mohit.sharma80805@gmail.com">
-                    mohit.sharma80805@gmail.com <span aria-hidden="true">↗</span>
+                <dl className="stack-grid">
+                    {stack.map((group) => (
+                        <div key={group.label}>
+                            <dt>{group.label}</dt>
+                            <dd>{group.tools}</dd>
+                        </div>
+                    ))}
+                </dl>
+            </section>
+
+            <section className="contact-section section-boundary" id="contact" aria-labelledby="contact-title">
+                <p className="eyebrow">Have a project in mind?</p>
+                <h2 id="contact-title">Let&apos;s make the next useful thing.</h2>
+                <p>Tell me what you are building, where it is stuck, and what a good outcome looks like.</p>
+                <a className="button button-primary" href="mailto:mohit.sharma80805@gmail.com">
+                    Start a conversation <span aria-hidden="true">↗</span>
                 </a>
             </section>
         </div>
