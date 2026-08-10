@@ -7,51 +7,62 @@ function hasLink(value: string) {
 
 export function ProjectList({ items }: { items: Project[] }) {
     return (
-        <div className="project-list">
-            {items.map((project) => (
-                <article className="project-row" key={project.id}>
-                    <div className="project-copy">
-                        <div className="project-title-row">
-                            <h3>{project.title}</h3>
+        <div className="project-grid">
+            {items.map((project, index) => {
+                const primaryLink = hasLink(project.link) ? project.link : null;
+                const sourceLink = hasLink(project.github) && project.github !== project.link
+                    ? project.github
+                    : null;
+
+                return (
+                    <article
+                        className={`project-card${index === 0 ? " project-card-featured" : ""}`}
+                        key={project.id}
+                    >
+                        <div className="project-kicker">
+                            <span>{project.category.join(" / ")}</span>
                             <span>{project.year}</span>
                         </div>
+
+                        <h3>
+                            {primaryLink ? (
+                                <a href={primaryLink} target="_blank" rel="noreferrer">
+                                    {project.title}<span aria-hidden="true">↗</span>
+                                </a>
+                            ) : project.title}
+                        </h3>
                         <p>{project.description}</p>
-                        <ul className="project-meta" aria-label={`${project.title} technologies`}>
+
+                        <ul className="project-tech" aria-label={`${project.title} technologies`}>
                             {project.tech.map((technology) => (
                                 <li key={technology}>{technology}</li>
                             ))}
                         </ul>
-                    </div>
 
-                    <div className="project-actions">
-                        {hasLink(project.link) ? (
-                            <a href={project.link} target="_blank" rel="noreferrer">
-                                Open project <span aria-hidden="true">↗</span>
+                        {sourceLink ? (
+                            <a className="source-link" href={sourceLink} target="_blank" rel="noreferrer">
+                                View source <span aria-hidden="true">↗</span>
                             </a>
                         ) : null}
-                        {hasLink(project.github) && project.github !== project.link ? (
-                            <a href={project.github} target="_blank" rel="noreferrer">
-                                Source <span aria-hidden="true">↗</span>
-                            </a>
-                        ) : null}
-                    </div>
-                </article>
-            ))}
+                    </article>
+                );
+            })}
         </div>
     );
 }
 
 export default function ProjectsSection() {
     return (
-        <section className="content-section" aria-labelledby="selected-projects">
-            <div className="section-heading">
-                <span aria-hidden="true">##</span>
-                <h2 id="selected-projects">Selected projects</h2>
+        <section className="projects-section section-boundary" id="work" aria-labelledby="selected-projects">
+            <div className="section-title-row">
+                <span className="section-mark" aria-hidden="true">↗</span>
+                <div>
+                    <h2 id="selected-projects">Selected work</h2>
+                    <p>AI products, developer tools, and interfaces built around real problems.</p>
+                </div>
+                <Link className="section-link" href="/projects">All projects <span aria-hidden="true">→</span></Link>
             </div>
-            <ProjectList items={projects.slice(0, 3)} />
-            <Link className="text-link section-link" href="/projects">
-                View every project <span aria-hidden="true">→</span>
-            </Link>
+            <ProjectList items={projects} />
         </section>
     );
 }
