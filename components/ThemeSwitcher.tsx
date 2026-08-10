@@ -70,7 +70,7 @@ export default function ThemeSwitcher() {
     return (
         <div className="flex" role="group" aria-label="Colour theme">
             <button
-                className="inline-flex h-[26px] min-w-[58px] cursor-pointer items-center justify-center gap-1.5 rounded-[4px] border border-black/30 bg-[#ff3658] px-2.5 font-sans text-[10px] leading-none font-semibold capitalize text-black transition-[transform,border-color] duration-150 ease-out hover:border-black/60 active:scale-[0.97] max-[390px]:min-w-[52px] max-[390px]:px-[7px]"
+                className="inline-flex h-[26px] min-w-[58px] cursor-pointer items-center justify-center gap-1.5 rounded-[4px] border border-black/30 bg-yellow-300 px-2.5 font-sans text-[10px] leading-none font-semibold capitalize text-black transition-[transform,border-color] duration-150 ease-out hover:border-black/60 active:scale-[0.97] max-[390px]:min-w-[52px] max-[390px]:px-[7px]"
                 type="button"
                 aria-label={`Switch to ${nextTheme} theme`}
                 title={`Switch to ${nextTheme} theme`}
