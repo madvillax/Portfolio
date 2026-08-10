@@ -8,6 +8,7 @@ export interface Project {
   year: number
   color: string
   accentColor: string
+  image: string
   link: string
   github: string
   featured: boolean
@@ -15,7 +16,7 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    id: 1,
+    id: 3,
     title: 'trackmebaby',
     description: 'A background desktop app that watches your projects folder and keeps track of what you are working on. Ask AI questions about your work history',
     longDescription:
@@ -26,6 +27,7 @@ export const projects: Project[] = [
     year: 2024,
     color: '#6366f1',
     accentColor: '#818cf8',
+    image: '/tmb.jpg',
     link: 'https://github.com/Feynmunh/trackmebaby',
     github: '#',
     featured: true,
@@ -41,14 +43,15 @@ export const projects: Project[] = [
     year: 2024,
     color: '#10b981',
     accentColor: '#34d399',
+    image: '/kropify.png',
     link: 'https://kropify.vercel.app/',
     github: '#',
     featured: true,
   },
   {
-    id: 3,
-    title: 'Alertship',
-    description: 'A web app for people to get notified about upcoming water and electricity outages on crowdsourced data',
+    id: 1,
+    title: 'evee',
+    description: 'evee is an AI-agent which find potential customers for your products through conversations on social media',
     longDescription:
       'A data analytics platform that lets non-technical users query complex datasets using natural language. Translates questions into SQL, executes them, and renders results as beautiful interactive charts. Built with a Python/FastAPI backend, React frontend, and LangChain for query orchestration.',
     tech: ['React', 'Python', 'firestoredb', 'Google Maps API'],
@@ -56,40 +59,28 @@ export const projects: Project[] = [
     year: 2024,
     color: '#f59e0b',
     accentColor: '#fbbf24',
-    link: 'https://alertest.vercel.app/',
+    image: '/evee.png',
+    link: 'https://evee.superplexer.com',
     github: '#',
     featured: true,
   },
   {
     id: 4,
-    title: 'Agency Portfolio',
-    description: 'Website development Agency Portioflio website',
+    title: 'BillAudit',
+    description: 'AI tools spend auditing Platform',
     longDescription:
-      'Devnio is an onlin agency which developes websites for their clients',
+      ' Most startups don’t know they’re overspending on AI tools. So i build BillAudit a tool which helps you quickly figure out whether your company is overspending on AI tools before renewals. You can also share your report on your email.    ',
     tech: ['Next.js', 'React', 'Node.js',],
     category: ['Frontend'],
     year: 2023,
     color: '#ec4899',
     accentColor: '#f472b6',
-    link: 'https://devnio2.vercel.app/',
+    image: '/billaudit.png',
+    link: 'https://billaudit.bemohit.dev/',
     github: '#',
     featured: false,
   },
-  {
-    id: 5,
-    title: 'Devdome',
-    description: 'A globe for worldwide events',
-    longDescription:
-      'Devdome is web platform in which all the events location , details are shown on the earth globe and user can directly redirect to their application page from it ',
-    tech: ['Next.js', 'TypeScript', 'Globe.gl', 'React','Express'],
-    category: ['Fullstack', '3D-Frontend'],
-    year: 2023,
-    color: '#8b5cf6',
-    accentColor: '#a78bfa',
-    link: '#',
-    github: '#',
-    featured: false,
-  }
+
 ]
 
 export const categories = ['All', 'AI', 'Fullstack', 'Developer Tools', 'Data', 'Realtime', 'SaaS', 'Voice']
