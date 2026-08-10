@@ -2,10 +2,10 @@ import Link from "next/link";
 import ProjectsSection from "@/components/ProjectsSection";
 
 const stack = [
-    { label: "Core", tools: "TypeScript, Python, React, Next.js" },
-    { label: "Backend", tools: "Node.js, Express, FastAPI, SQLite, Firestore" },
-    { label: "AI systems", tools: "Gemini, machine learning, agent workflows" },
-    { label: "Interface", tools: "Tailwind CSS, Globe.gl, Google Maps API" },
+    { label: "Core", tools: "TypeScript, Python, React, Next.js, Redux" },
+    { label: "Backend", tools: "Bun.js, Node.js, FastAPI, SQLite, Turso, Drizzle, Postgres" },
+    { label: "AI systems", tools: "Vercel AI SDK, Trigger.dev, Vercel eve, mastra" },
+    { label: "Interface", tools: "Tailwind CSS, base-ui," },
 ];
 
 const socialLinks = [
