@@ -1,28 +1,34 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Navbar() {
     return (
         <header className="site-header">
-            <div className="page-shell nav-row">
-                <Link className="wordmark" href="/" aria-label="Mohit Sharma, home">
-                    mohit.sharma
+            <div className="identity-row">
+                <Link className="identity" href="/" aria-label="Mohit Sharma, home">
+                    <Image
+                        className="identity-image"
+                        src="/profile.jpg"
+                        alt=""
+                        width={54}
+                        height={54}
+                        priority
+                    />
+                    <span className="identity-copy">
+                        <strong>Mohit Sharma</strong>
+                        <span>AI Full-stack Developer</span>
+                    </span>
                 </Link>
 
-                <nav aria-label="Primary navigation">
-                    <ul className="nav-links">
-                        <li>
-                            <Link href="/projects">Projects</Link>
-                        </li>
-                        <li>
-                            <a href="https://github.com/madvillax" target="_blank" rel="noreferrer">
-                                GitHub
-                            </a>
-                        </li>
-                        <li>
-                            <a href="mailto:mohit.sharma80805@gmail.com">Email</a>
-                        </li>
-                    </ul>
-                </nav>
+                <div className="header-controls">
+                    <nav aria-label="Primary navigation">
+                        <ul className="nav-links">
+                            <li><Link href="/#work">Work</Link></li>
+                            <li><Link href="/projects">Projects</Link></li>
+                            <li><Link href="/#contact">Contact</Link></li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
         </header>
     );
