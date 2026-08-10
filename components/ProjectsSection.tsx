@@ -5,6 +5,18 @@ function hasLink(value: string) {
     return value.startsWith("http");
 }
 
+function projectAddress(project: Project) {
+    const url = hasLink(project.link)
+        ? project.link
+        : hasLink(project.github)
+            ? project.github
+            : null;
+
+    if (!url) return project.title.toLowerCase().replace(/\s+/g, "");
+
+    return new URL(url).hostname.replace(/^www\./, "");
+}
+
 export function ProjectList({ items }: { items: Project[] }) {
     return (
         <div className="project-grid">
@@ -15,39 +27,49 @@ export function ProjectList({ items }: { items: Project[] }) {
                     : null;
 
                 return (
-                    <article
-                        className={`project-card${index === 0 ? " project-card-featured" : ""}`}
-                        key={project.id}
-                    >
-                        <div className="project-kicker">
-                            <span>{project.category.join(" / ")}</span>
-                            <span>{project.year}</span>
-                        </div>
-
-                        <h3>
-                            {primaryLink ? (
-                                <a href={primaryLink} target="_blank" rel="noreferrer">
-                                    {project.title}<span aria-hidden="true">↗</span>
-                                </a>
-                            ) : project.title}
-                        </h3>
-                        <p>{project.description}</p>
-
-                        <ul className="project-tech" aria-label={`${project.title} technologies`}>
-                            {project.tech.map((technology) => (
-                                <li key={technology}>{technology}</li>
-                            ))}
-                        </ul>
-
-                        {sourceLink ? (
-                            <a className="source-link" href={sourceLink} target="_blank" rel="noreferrer">
-                                View source <span aria-hidden="true">↗</span>
+                    <article className="project-browser-card" key={project.id}>
+                        {primaryLink || sourceLink ? (
+                            <a
+                                className="project-preview"
+                                href={primaryLink ?? sourceLink ?? undefined}
+                                target="_blank"
+                                rel="noreferrer"
+                                aria-label={`Open ${project.title}`}
+                            >
+                                <BrowserPreview index={index} address={projectAddress(project)} />
                             </a>
-                        ) : null}
+                        ) : (
+                            <div className="project-preview">
+                                <BrowserPreview index={index} address={projectAddress(project)} />
+                            </div>
+                        )}
+
+                        <div className="project-browser-copy">
+                            <h3>
+                                {primaryLink ? (
+                                    <a href={primaryLink} target="_blank" rel="noreferrer">
+                                        {project.title}<span aria-hidden="true">↗</span>
+                                    </a>
+                                ) : project.title}
+                            </h3>
+                            <p>{project.description}</p>
+                        </div>
                     </article>
                 );
             })}
         </div>
+    );
+}
+
+function BrowserPreview({ index, address }: { index: number; address: string }) {
+    return (
+        <>
+            <div className="browser-toolbar" aria-hidden="true">
+                <span className="browser-dots"><i /><i /><i /></span>
+                <span className="browser-address">https://{address}</span>
+            </div>
+            <div className={`project-atlas-preview project-atlas-preview-${index + 1}`} />
+        </>
     );
 }
 
