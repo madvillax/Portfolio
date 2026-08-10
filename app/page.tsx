@@ -51,6 +51,24 @@ export default function Home() {
                 </nav>
             </section>
 
+            <section className="experience-section section-boundary" id="experience" aria-labelledby="experience-title">
+                <div className="section-title-row">
+                    <span className="section-mark" aria-hidden="true">@</span>
+                    <div>
+                        <h2 id="experience-title">Experience</h2>
+                        <p>A short record of the teams I have worked with.</p>
+                    </div>
+                </div>
+
+                <article className="experience-entry">
+                    <div>
+                        <h3>Frontend Developer</h3>
+                        <p className="experience-company">@moonshift</p>
+                    </div>
+                    <p>Frontend product development at Moonshift.</p>
+                </article>
+            </section>
+
             <ProjectsSection />
 
             <section className="stack-section section-boundary" aria-labelledby="stack-title">
