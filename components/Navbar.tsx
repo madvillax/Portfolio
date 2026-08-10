@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import ThemeSwitcher from "@/components/ThemeSwitcher";
 
 export default function Navbar() {
     return (
@@ -24,10 +25,12 @@ export default function Navbar() {
                     <nav aria-label="Primary navigation">
                         <ul className="nav-links">
                             <li><Link href="/#work">Work</Link></li>
+                            <li><Link href="/#experience">Experience</Link></li>
                             <li><Link href="/projects">Projects</Link></li>
                             <li><Link href="/#contact">Contact</Link></li>
                         </ul>
                     </nav>
+                    <ThemeSwitcher />
                 </div>
             </div>
         </header>
