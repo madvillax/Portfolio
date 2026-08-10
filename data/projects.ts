@@ -54,7 +54,7 @@ export const projects: Project[] = [
     description: 'evee is an AI-agent which find potential customers for your products through conversations on social media',
     longDescription:
       'A data analytics platform that lets non-technical users query complex datasets using natural language. Translates questions into SQL, executes them, and renders results as beautiful interactive charts. Built with a Python/FastAPI backend, React frontend, and LangChain for query orchestration.',
-    tech: ['React', 'Python', 'firestoredb', 'Google Maps API'],
+    tech: ['React', 'Next.js', 'mastra', 'bunjs'],
     category: ['Data', 'Fullstack'],
     year: 2024,
     color: '#f59e0b',
