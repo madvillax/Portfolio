@@ -19,13 +19,11 @@ export default function Home() {
     return (
         <div>
             <section className="border-b border-line px-9 pt-[46px] pb-[38px] max-[760px]:px-5 max-[760px]:pt-[34px] max-[760px]:pb-[30px]" aria-labelledby="intro-title">
-                <h1 className="m-0 max-w-[650px] font-sans text-[clamp(22px,3vw,27px)] leading-[1.24] font-semibold tracking-[-0.04em]" id="intro-title">I turn AI product ideas into dependable software.</h1>
+                <h1 className="m-0 max-w-[650px] font-sans text-[clamp(22px,3vw,27px)] leading-[1.24] font-semibold tracking-[-0.04em]" id="intro-title">“Living life as an artist is a practice. You are either engaging in the practice or you’re not.” — Rick Rubin</h1>
 
-                <ul className="mt-[25px] mb-0 grid list-disc gap-[7px] pl-[17px] text-sm text-muted marker:text-ink">
-                    <li>I build AI-native products and agent systems end to end with TypeScript, Python, and Next.js.</li>
-                    <li>I work across orchestration, APIs, product interfaces, and deployment.</li>
-                    <li>I care about software that stays useful after the demo.</li>
-                </ul>
+                <p className="mt-[25px] mb-0 max-w-[1320px] text-[clamp(17px,1.45vw,22px)] leading-[1.45] text-muted">
+                    Hi, my name is Mohit and I’m a Full-Stack Developer. Aside from Fullstack, I love understanding more and more about AI and Deep Learning. I’m more of a curator than a creator. I think I have a pretty good taste in design because I consume a lot of artistic stuff and always find myself noticing the small details. Other than tech, I love hip-hop and cinema. I listen to a lot of music and watch a lot of movies.
+                </p>
 
                 <p className="mt-[21px] mb-0 max-w-[620px] text-[13px] text-muted">
                     I can help scope the product, build the first version, or take ownership of the next stage.
