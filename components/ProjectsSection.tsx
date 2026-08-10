@@ -57,7 +57,7 @@ export default function ProjectsSection() {
             <div className="section-title-row">
                 <span className="section-mark" aria-hidden="true">↗</span>
                 <div>
-                    <h2 id="selected-projects">Selected work</h2>
+                    <h2 id="selected-projects">Projects</h2>
                     <p>AI products, developer tools, and interfaces built around real problems.</p>
                 </div>
                 <Link className="section-link" href="/projects">All projects <span aria-hidden="true">→</span></Link>
