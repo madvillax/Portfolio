@@ -4,7 +4,7 @@ import { ProjectList } from "@/components/ProjectsSection";
 import { projects } from "@/data/projects";
 
 export const metadata: Metadata = {
-    title: "Projects",
+    title: "Mohit Sharma",
     description: "Selected AI, full-stack, and frontend projects by Mohit Sharma.",
 };
 
