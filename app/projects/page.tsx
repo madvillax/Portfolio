@@ -10,26 +10,25 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
     return (
-        <div className="page-shell page-content project-page">
-            <header className="page-intro">
-                <Link className="back-link" href="/">
-                    <span aria-hidden="true">←</span> Home
-                </Link>
-                <div className="section-heading">
-                    <span aria-hidden="true">#</span>
-                    <h1>Projects</h1>
-                </div>
-                <p>
-                    A working index of AI products, developer tools, and full-stack experiments.
-                </p>
+        <div className="page-content project-page">
+            <header className="page-intro section-boundary">
+                <Link className="back-link" href="/"><span aria-hidden="true">←</span> Home</Link>
+                <p className="eyebrow">Work index</p>
+                <h1>Projects</h1>
+                <p>A focused collection of AI products, developer tools, and full-stack experiments.</p>
             </header>
 
-            <ProjectList items={projects} />
+            <section className="projects-section section-boundary" aria-label="Project list">
+                <ProjectList items={projects} />
+            </section>
 
-            <section className="project-contact" aria-labelledby="project-contact-title">
-                <h2 id="project-contact-title">Want to build something together?</h2>
-                <a className="text-link" href="mailto:mohit.sharma80805@gmail.com">
-                    Send me an email <span aria-hidden="true">→</span>
+            <section className="project-contact section-boundary" aria-labelledby="project-contact-title">
+                <div>
+                    <p className="eyebrow">Available for thoughtful work</p>
+                    <h2 id="project-contact-title">Want to build something together?</h2>
+                </div>
+                <a className="button button-primary" href="mailto:mohit.sharma80805@gmail.com">
+                    Send an email <span aria-hidden="true">↗</span>
                 </a>
             </section>
         </div>
