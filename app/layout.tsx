@@ -1,7 +1,20 @@
 import type { Metadata, Viewport } from "next";
+import { Bricolage_Grotesque, Manrope } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+
+const displayFont = Bricolage_Grotesque({
+    subsets: ["latin"],
+    variable: "--font-display",
+    display: "swap",
+});
+
+const bodyFont = Manrope({
+    subsets: ["latin"],
+    variable: "--font-body",
+    display: "swap",
+});
 
 export const metadata: Metadata = {
     title: {
@@ -19,10 +32,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-    themeColor: [
-        { media: "(prefers-color-scheme: light)", color: "#f4f4f1" },
-        { media: "(prefers-color-scheme: dark)", color: "#181816" },
-    ],
+    colorScheme: "dark",
+    themeColor: "#020202",
 };
 
 export default function RootLayout({
@@ -32,13 +43,15 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body>
+            <body className={`${displayFont.variable} ${bodyFont.variable}`}>
                 <a className="skip-link" href="#main-content">
                     Skip to content
                 </a>
-                <Navbar />
-                <main id="main-content">{children}</main>
-                <Footer />
+                <div className="site-frame">
+                    <Navbar />
+                    <main id="main-content">{children}</main>
+                    <Footer />
+                </div>
             </body>
         </html>
     );
