@@ -44,11 +44,14 @@ export default function RootLayout({
             <head>
                 <script dangerouslySetInnerHTML={{ __html: themeScript }} />
             </head>
-            <body className={`${GeistSans.variable} ${GeistMono.variable}`}>
-                <a className="skip-link" href="#main-content">
+            <body className={`${GeistSans.variable} ${GeistMono.variable} m-0 text-[15px] leading-[1.6]`}>
+                <a
+                    className="fixed top-3 left-3 z-30 -translate-y-[160%] rounded-[4px] bg-ink px-3 py-2 text-xs text-button-ink transition-transform focus:translate-y-0"
+                    href="#main-content"
+                >
                     Skip to content
                 </a>
-                <div className="site-frame">
+                <div className="mx-[clamp(24px,8vw,120px)] min-h-dvh border-x border-line bg-surface max-[760px]:mx-0 max-[760px]:border-x-0">
                     <Navbar />
                     <main id="main-content">{children}</main>
                     <Footer />
