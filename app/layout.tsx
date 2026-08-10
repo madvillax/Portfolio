@@ -1,20 +1,18 @@
 import type { Metadata, Viewport } from "next";
-import { Bricolage_Grotesque, Manrope } from "next/font/google";
+import { GeistMono } from "geist/font/mono";
+import { GeistSans } from "geist/font/sans";
 import "./globals.css";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 
-const displayFont = Bricolage_Grotesque({
-    subsets: ["latin"],
-    variable: "--font-display",
-    display: "swap",
-});
-
-const bodyFont = Manrope({
-    subsets: ["latin"],
-    variable: "--font-body",
-    display: "swap",
-});
+const themeScript = `
+    try {
+        const savedTheme = localStorage.getItem("portfolio-theme");
+        if (savedTheme === "light" || savedTheme === "dark") {
+            document.documentElement.dataset.theme = savedTheme;
+        }
+    } catch {}
+`;
 
 export const metadata: Metadata = {
     title: {
@@ -32,8 +30,11 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-    colorScheme: "dark",
-    themeColor: "#020202",
+    colorScheme: "dark light",
+    themeColor: [
+        { media: "(prefers-color-scheme: dark)", color: "#131313" },
+        { media: "(prefers-color-scheme: light)", color: "#f6f7f9" },
+    ],
 };
 
 export default function RootLayout({
@@ -42,8 +43,11 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
-            <body className={`${displayFont.variable} ${bodyFont.variable}`}>
+        <html lang="en" suppressHydrationWarning>
+            <head>
+                <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+            </head>
+            <body className={`${GeistSans.variable} ${GeistMono.variable}`}>
                 <a className="skip-link" href="#main-content">
                     Skip to content
                 </a>
