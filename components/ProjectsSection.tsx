@@ -36,11 +36,11 @@ export function ProjectList({ items }: { items: Project[] }) {
                                 rel="noreferrer"
                                 aria-label={`Open ${project.title}`}
                             >
-                                <BrowserPreview index={index} address={projectAddress(project)} />
+                                <BrowserPreview index={index} address={projectAddress(project)} image={project.image} />
                             </a>
                         ) : (
                             <div className="border-b border-line bg-surface-soft p-1 pb-0">
-                                <BrowserPreview index={index} address={projectAddress(project)} />
+                                <BrowserPreview index={index} address={projectAddress(project)} image={project.image} />
                             </div>
                         )}
 
@@ -61,7 +61,12 @@ export function ProjectList({ items }: { items: Project[] }) {
     );
 }
 
-function BrowserPreview({ index, address }: { index: number; address: string }) {
+function BrowserPreview({ index, address, image }: { index: number; address: string; image: string }) {
+    const fallbackPosition = ["0 0", "100% 0", "0 50%", "100% 50%", "0 100%"][index] ?? "100% 100%";
+    const previewStyle = image
+        ? { backgroundImage: `url(${image})`, backgroundPosition: "center", backgroundSize: "cover" }
+        : { backgroundPosition: fallbackPosition };
+
     return (
         <>
             <div className="flex min-h-[23px] items-center gap-1.5 rounded-t-[10px] border border-b-0 border-line bg-surface px-1.5 py-[3px]" aria-hidden="true">
@@ -70,7 +75,7 @@ function BrowserPreview({ index, address }: { index: number; address: string }) 
             </div>
             <div
                 className="aspect-[16/7.4] border border-b-0 border-line bg-[#101010] bg-[url('/projects-atlas.png')] bg-[length:200%_300%] bg-no-repeat"
-                style={{ backgroundPosition: ["0 0", "100% 0", "0 50%", "100% 50%", "0 100%"][index] ?? "100% 100%" }}
+                style={previewStyle}
             />
         </>
     );
