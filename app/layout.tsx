@@ -5,15 +5,6 @@ import "./globals.css";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 
-const themeScript = `
-    try {
-        const savedTheme = localStorage.getItem("portfolio-theme");
-        if (savedTheme === "light" || savedTheme === "dark") {
-            document.documentElement.dataset.theme = savedTheme;
-        }
-    } catch {}
-`;
-
 export const metadata: Metadata = {
     title: "Mohit Sharma",
     description:
@@ -27,11 +18,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-    colorScheme: "dark light",
-    themeColor: [
-        { media: "(prefers-color-scheme: dark)", color: "#131313" },
-        { media: "(prefers-color-scheme: light)", color: "#f3eee3" },
-    ],
+    colorScheme: "dark",
+    themeColor: "#131313",
 };
 
 export default function RootLayout({
@@ -40,10 +28,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" suppressHydrationWarning>
-            <head>
-                <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-            </head>
+        <html lang="en">
             <body className={`${GeistSans.variable} ${GeistMono.variable} m-0 text-[15px] leading-[1.6]`}>
                 <a
                     className="fixed top-3 left-3 z-30 -translate-y-[160%] rounded-[4px] bg-ink px-3 py-2 text-xs text-button-ink transition-transform focus:translate-y-0"
