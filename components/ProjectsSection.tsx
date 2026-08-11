@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { projects, type Project } from "@/data/projects";
 
@@ -20,14 +21,14 @@ function projectAddress(project: Project) {
 export function ProjectList({ items }: { items: Project[] }) {
     return (
         <div className="mx-auto grid w-full max-w-[820px] grid-cols-2 gap-3 max-[760px]:grid-cols-1">
-            {items.map((project, index) => {
+            {items.map((project) => {
                 const primaryLink = hasLink(project.link) ? project.link : null;
                 const sourceLink = hasLink(project.github) && project.github !== project.link
                     ? project.github
                     : null;
 
                 return (
-                    <article className="overflow-hidden rounded-[15px] border border-line bg-surface transition-[transform,border-color] duration-180 ease-out hover:-translate-y-0.5 hover:border-strong-line motion-reduce:transition-none" key={project.id}>
+                    <article className="overflow-hidden rounded-[15px] border border-line bg-surface transition-[transform,border-color] duration-180 ease-out [content-visibility:auto] [contain-intrinsic-size:0_300px] hover:-translate-y-0.5 hover:border-strong-line motion-reduce:transition-none" key={project.id}>
                         {primaryLink || sourceLink ? (
                             <a
                                 className="block border-b border-line bg-surface-soft p-1 pb-0 text-inherit no-underline"
@@ -36,11 +37,11 @@ export function ProjectList({ items }: { items: Project[] }) {
                                 rel="noreferrer"
                                 aria-label={`Open ${project.title}`}
                             >
-                                <BrowserPreview index={index} address={projectAddress(project)} image={project.image} />
+                                <BrowserPreview address={projectAddress(project)} image={project.image} />
                             </a>
                         ) : (
                             <div className="border-b border-line bg-surface-soft p-1 pb-0">
-                                <BrowserPreview index={index} address={projectAddress(project)} image={project.image} />
+                                <BrowserPreview address={projectAddress(project)} image={project.image} />
                             </div>
                         )}
 
@@ -61,22 +62,24 @@ export function ProjectList({ items }: { items: Project[] }) {
     );
 }
 
-function BrowserPreview({ index, address, image }: { index: number; address: string; image: string }) {
-    const fallbackPosition = ["0 0", "100% 0", "0 50%", "100% 50%", "0 100%"][index] ?? "100% 100%";
-    const previewStyle = image
-        ? { backgroundImage: `url(${image})`, backgroundPosition: "center", backgroundSize: "cover" }
-        : { backgroundPosition: fallbackPosition };
-
+function BrowserPreview({ address, image }: { address: string; image: string }) {
     return (
         <>
             <div className="flex min-h-[23px] items-center gap-1.5 rounded-t-[10px] border border-b-0 border-line bg-surface px-1.5 py-[3px]" aria-hidden="true">
                 <span className="flex shrink-0 gap-[3px]"><i className="size-1.5 rounded-full bg-[#ff5f57]" /><i className="size-1.5 rounded-full bg-[#febc2e]" /><i className="size-1.5 rounded-full bg-[#28c840]" /></span>
                 <span className="min-w-0 truncate rounded-full border border-line px-1.5 py-[3px] text-[7px] leading-[1.1] font-semibold text-faint">https://{address}</span>
             </div>
-            <div
-                className="aspect-[16/7.4] border border-b-0 border-line bg-[#101010] bg-[url('/projects-atlas.png')] bg-[length:200%_300%] bg-no-repeat"
-                style={previewStyle}
-            />
+            <div className="relative aspect-[16/7.4] overflow-hidden border border-b-0 border-line bg-[#101010]">
+                {image ? (
+                    <Image
+                        src={image}
+                        alt=""
+                        fill
+                        sizes="(max-width: 760px) calc(100vw - 40px), 410px"
+                        className="object-cover"
+                    />
+                ) : null}
+            </div>
         </>
     );
 }
