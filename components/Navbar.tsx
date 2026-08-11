@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import ThemeSwitcher from "@/components/ThemeSwitcher";
 
 export default function Navbar() {
     return (
@@ -21,7 +20,7 @@ export default function Navbar() {
                     </span>
                 </Link>
 
-                <div className="flex items-center gap-3.5 border-line max-[760px]:justify-between max-[760px]:border-t max-[760px]:pt-4">
+                <div className="flex items-center border-line max-[760px]:justify-between max-[760px]:border-t max-[760px]:pt-4">
                     <nav aria-label="Primary navigation">
                         <ul className="m-0 flex list-none items-center gap-3.5 p-0 max-[390px]:gap-2.5">
                             <li><Link className="text-[11px] font-semibold text-muted no-underline transition-colors hover:text-ink" href="/#work">Work</Link></li>
@@ -30,7 +29,6 @@ export default function Navbar() {
                             <li><Link className="text-[11px] font-semibold text-muted no-underline transition-colors hover:text-ink" href="/#contact">Contact</Link></li>
                         </ul>
                     </nav>
-                    <ThemeSwitcher />
                 </div>
             </div>
         </header>
