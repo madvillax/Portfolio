@@ -29,20 +29,6 @@
     --status: #35c785;
 }
 
-:root[data-theme="light"] {
-    color-scheme: light;
-    --canvas: #f3eee3;
-    --surface: #faf7f0;
-    --surface-soft: #f0eadf;
-    --ink: #1b1915;
-    --muted: #696157;
-    --faint: #91887d;
-    --line: #e0d8ca;
-    --strong-line: #cfc4b3;
-    --button-ink: #faf7f0;
-    --status: #138a58;
-}
-
 @layer base {
     html {
         scroll-behavior: smooth;
@@ -76,19 +62,6 @@
         outline: 2px solid var(--ink);
         outline-offset: 3px;
     }
-}
-
-::view-transition-old(root),
-::view-transition-new(root) {
-    animation: none;
-}
-
-::view-transition-old(root) {
-    z-index: 0;
-}
-
-::view-transition-new(root) {
-    z-index: 1;
 }
 
 @media (prefers-reduced-motion: reduce) {
