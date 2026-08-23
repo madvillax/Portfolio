@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import ProjectsSection from "@/components/ProjectsSection";
 
 const stack = [
@@ -51,20 +52,33 @@ export default function Home() {
             </section>
 
             <section className="border-b border-line px-9 py-[42px] max-[760px]:px-5" id="experience" aria-labelledby="experience-title">
-                <div className="mb-[26px] grid grid-cols-[32px_minmax(0,1fr)] items-start gap-[13px]">
-                    <span className="grid size-8 place-items-center rounded-[2px] border border-line bg-surface-soft font-sans text-[13px]" aria-hidden="true">@</span>
+                <div className="mb-[26px] flex items-end justify-between gap-4 max-[560px]:items-start max-[560px]:flex-col">
                     <div>
                         <h2 className="m-0 font-sans text-[17px] leading-[1.25] font-semibold tracking-[-0.03em]" id="experience-title">Experience</h2>
-                        <p className="mt-1 mb-0 text-[11px] text-muted">A short record of the teams I have worked with.</p>
+                        <p className="mt-1 mb-0 text-[11px] text-muted">Current role, focused on frontend product work.</p>
                     </div>
+                    <span className="font-mono text-[10px] font-semibold tracking-[0.08em] text-faint uppercase">01 / Current</span>
                 </div>
 
-                <article className="grid grid-cols-[minmax(0,1fr)_minmax(180px,0.7fr)] items-start gap-6 rounded-[4px] border border-line bg-surface-soft p-[18px] max-[760px]:grid-cols-1 max-[760px]:gap-4">
+                <article className="grid grid-cols-[112px_minmax(0,1fr)] items-start gap-6 border-t border-line pt-[18px] max-[760px]:grid-cols-1 max-[760px]:gap-3">
+                    <p className="m-0 font-mono text-[10px] font-semibold tracking-[0.08em] text-faint uppercase">Frontend</p>
                     <div>
-                        <h3 className="m-0 font-sans text-lg leading-[1.2] font-semibold tracking-[-0.03em]">Frontend Developer</h3>
-                        <p className="mt-[7px] mb-0 text-[11px] font-bold text-muted">@moonshift</p>
+                        <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2">
+                            <h3 className="m-0 font-sans text-lg leading-[1.2] font-semibold tracking-[-0.03em]">Frontend Developer</h3>
+                            <a className="inline-flex items-center gap-2 text-[11px] font-bold text-muted no-underline transition-colors hover:text-ink" href="https://moonshift.io/" target="_blank" rel="noreferrer">
+                                <span className="grid size-6 place-items-center rounded-[3px] border border-line bg-surface-soft p-1" aria-hidden="true">
+                                    <Image className="size-full object-contain" src="/moonshift-icon-white.svg" alt="" width={24} height={24} />
+                                </span>
+                                <span>Moonshift</span><span className="text-faint" aria-hidden="true">↗</span>
+                            </a>
+                        </div>
+                        <p className="mt-3 mb-0 max-w-[650px] text-[12px] leading-[1.55] text-muted">Building product interfaces for Moonshift, an AI app builder that turns a plain-language prompt into a deployed web app.</p>
+                        <ul className="mt-4 mb-0 flex flex-wrap gap-x-5 gap-y-2 p-0 text-[10px] font-semibold text-faint max-[520px]:grid max-[520px]:gap-2" aria-label="Frontend focus areas">
+                            <li className="list-none">Product UI</li>
+                            <li className="list-none">Dashboard flows</li>
+                            <li className="list-none">Build and launch flows</li>
+                        </ul>
                     </div>
-                    <p className="m-0 text-[11px] leading-[1.55] text-muted">Frontend product development at Moonshift.</p>
                 </article>
             </section>
 
