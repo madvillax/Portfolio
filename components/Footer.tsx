@@ -55,9 +55,6 @@ export default function Footer({ wordmarkColor = "#1C6146" }: FooterProps) {
                 <div className="pr-9 pl-[clamp(72px,8vw,112px)] pt-[58px] max-[760px]:pr-5 max-[760px]:pl-9 max-[760px]:pt-12">
                     <div className="grid grid-cols-[180px_minmax(0,680px)] items-start justify-between gap-10 max-[900px]:grid-cols-[140px_minmax(0,1fr)] max-[760px]:grid-cols-1">
                         <nav className="max-w-[180px]" aria-label="Footer navigation">
-                            <p className="mt-0 mb-2.5 text-[9px] font-bold tracking-[0.08em] text-[#70414e] uppercase">
-                                Navigation
-                            </p>
                             <ul className="m-0 grid list-none gap-0.5 p-0">
                                 {navigationLinks.map((link) => (
                                     <li key={link.label}>
