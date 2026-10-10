@@ -16,6 +16,22 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: 5,
+    title: 'strickey',
+    description: 'A native macOS menu bar app that brings Cherry MX mechanical keyboard sounds to everyday typing.',
+    longDescription:
+      'strickey is a lightweight Swift macOS menu bar app with recorded Cherry MX Red, Brown, and Blue switch sounds. It includes independent keyboard volume, sound previews, pause and resume, shortcut filtering, and launch at login. Preferences stay on your Mac, and no typed text or keystroke history is recorded or sent over the network. Requires macOS 14 or later, with native Liquid Glass controls on macOS 26 and later.',
+    tech: ['Swift', 'SwiftUI', 'AppKit', 'AVFoundation', 'Next.js', 'TypeScript', 'Tailwind CSS'],
+    category: ['Developer Tools'],
+    year: 2026,
+    color: '#0088ff',
+    accentColor: '#9bcfff',
+    image: '/strickey.png',
+    link: 'https://strickey.superplexer.com',
+    github: 'https://github.com/madvillax/strickey',
+    featured: true,
+  },
+  {
     id: 3,
     title: 'trackmebaby',
     description: 'A background desktop app that watches your projects folder and keeps track of what you are working on. Ask AI questions about your work history',

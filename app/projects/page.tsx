@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ArrowLeft } from "@phosphor-icons/react/dist/ssr/ArrowLeft";
 import { ProjectList } from "@/components/ProjectsSection";
 import { projects } from "@/data/projects";
 
@@ -11,14 +12,17 @@ export const metadata: Metadata = {
 export default function ProjectsPage() {
     return (
         <div>
-            <header className="border-b border-line px-9 pt-[38px] pb-[42px] max-[760px]:px-5">
-                <Link className="mb-[34px] inline-block text-[10px] font-bold text-muted no-underline transition-colors hover:text-ink" href="/"><span aria-hidden="true">←</span> Home</Link>
+            <header className="border-b border-line px-9 pt-8 pb-10 max-[760px]:px-5 max-[760px]:pb-8">
+                <Link className="mb-9 inline-flex min-h-8 items-center gap-2 text-[11px] font-medium text-muted no-underline transition-colors hover:text-ink" href="/"><ArrowLeft size={14} aria-hidden="true" /> Home</Link>
                 <p className="mt-0 mb-[9px] text-[9px] font-bold tracking-[0.08em] text-faint uppercase">Work index</p>
-                <h1 className="m-0 font-sans text-4xl leading-[1.1] font-semibold tracking-[-0.04em]">Projects</h1>
-                <p className="mt-3 mb-0 max-w-[520px] text-xs text-muted">A focused collection of AI products, developer tools, and full-stack experiments.</p>
+                <div className="flex items-center gap-3.5">
+                    <h1 className="m-0 font-sans text-[40px] leading-[1.1] font-semibold tracking-[-0.05em] max-[760px]:text-[34px]">Projects</h1>
+                    <span className="rounded border border-line px-2 py-1 font-mono text-[11px] leading-none text-muted" aria-label={`${projects.length} projects`}>{projects.length}</span>
+                </div>
+                <p className="mt-3 mb-0 max-w-[520px] text-[13px] leading-relaxed text-muted">A focused collection of AI products, developer tools, and full-stack experiments.</p>
             </header>
 
-            <section className="border-b border-line px-9 pt-[30px] pb-[42px] max-[760px]:px-5" aria-label="Project list">
+            <section className="border-b border-line px-9 py-9 max-[760px]:px-5 max-[760px]:py-6" aria-label="Project list">
                 <ProjectList items={projects} />
             </section>
 

@@ -1,6 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
+import { EnvelopeSimple } from "@phosphor-icons/react/dist/ssr/EnvelopeSimple";
+import { GithubLogo } from "@phosphor-icons/react/dist/ssr/GithubLogo";
+import { LinkedinLogo } from "@phosphor-icons/react/dist/ssr/LinkedinLogo";
+import { XLogo } from "@phosphor-icons/react/dist/ssr/XLogo";
 import ProjectsSection from "@/components/ProjectsSection";
+import GitHubContributions from "@/components/GitHubContributions";
 
 const stack = [
     { label: "Core", tools: "TypeScript, Python, React, Next.js, Redux" },
@@ -10,10 +15,10 @@ const stack = [
 ];
 
 const socialLinks = [
-    { label: "GitHub", href: "https://github.com/madvillax" },
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/mohit-sharma-432939271" },
-    { label: "X", href: "https://x.com/madvillax" },
-    { label: "Email", href: "mailto:mohit.sharma80805@gmail.com" },
+    { label: "GitHub", href: "https://github.com/madvillax", icon: GithubLogo },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/mohit-sharma-432939271", icon: LinkedinLogo },
+    { label: "X", href: "https://x.com/madvillax", icon: XLogo },
+    { label: "Email", href: "mailto:mohit.sharma80805@gmail.com", icon: EnvelopeSimple },
 ];
 
 export default function Home() {
@@ -36,19 +41,21 @@ export default function Home() {
                     <span className="inline-flex min-h-[34px] items-center gap-[7px] px-[5px] text-[10px] font-semibold text-muted"><span className="size-[7px] rounded-full bg-status shadow-[0_0_0_3px_color-mix(in_srgb,var(--status)_16%,transparent)]" aria-hidden="true" />Open to remote work</span>
                 </div>
 
-                <nav className="mt-7 flex flex-wrap gap-3.5 border-t border-line pt-[17px]" aria-label="Social links">
+                <nav className="mt-7 flex flex-wrap gap-2 border-t border-line pt-4" aria-label="Social links">
                     {socialLinks.map((link) => (
                         <a
                             key={link.label}
                             href={link.href}
                             target={link.href.startsWith("http") ? "_blank" : undefined}
                             rel={link.href.startsWith("http") ? "noreferrer" : undefined}
-                            className="text-[10px] font-bold text-muted no-underline transition-colors hover:text-ink"
+                            className="inline-flex min-h-10 items-center gap-2 rounded-md border border-line bg-surface px-3 text-[11px] font-medium text-muted no-underline transition-[background-color,border-color,color] hover:border-strong-line hover:bg-surface-soft hover:text-ink active:scale-[0.98] motion-reduce:transition-none"
                         >
-                            {link.label}<span className="ml-1 text-faint" aria-hidden="true">↗</span>
+                            <link.icon size={15} weight="regular" aria-hidden="true" />
+                            {link.label}
                         </a>
                     ))}
                 </nav>
+                <GitHubContributions />
             </section>
 
             <section className="border-b border-line px-9 py-[42px] max-[760px]:px-5" id="experience" aria-labelledby="experience-title">
