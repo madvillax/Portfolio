@@ -11,14 +11,14 @@
     --color-strong-line: var(--strong-line);
     --color-button-ink: var(--button-ink);
     --color-status: var(--status);
-    --font-sans: var(--font-geist-sans);
+    --font-sans: var(--font-bricolage-grotesque);
     --font-mono: var(--font-geist-mono);
 }
 
 :root {
     color-scheme: dark;
-    --canvas: #131313;
-    --surface: #131313;
+    --canvas: #0b0b0b;
+    --surface: #0b0b0b;
     --surface-soft: #1b1b1b;
     --ink: #f4f4f2;
     --muted: #a5a5a1;
@@ -39,7 +39,7 @@
         min-height: 100dvh;
         background: var(--canvas);
         color: var(--ink);
-        font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+        font-family: var(--font-bricolage-grotesque), ui-sans-serif, system-ui, sans-serif;
         text-rendering: optimizeLegibility;
         -webkit-font-smoothing: antialiased;
     }

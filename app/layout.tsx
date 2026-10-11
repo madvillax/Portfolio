@@ -1,9 +1,16 @@
 import type { Metadata, Viewport } from "next";
+import localFont from "next/font/local";
 import { GeistMono } from "geist/font/mono";
-import { GeistSans } from "geist/font/sans";
 import "./globals.css";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+
+const BricolageGrotesque = localFont({
+    src: "../public/fonts/BricolageGrotesque-Latin-Variable.woff2",
+    variable: "--font-bricolage-grotesque",
+    weight: "200 800",
+    display: "swap",
+});
 
 export const metadata: Metadata = {
     title: "Mohit Sharma",
@@ -19,7 +26,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
     colorScheme: "dark",
-    themeColor: "#131313",
+    themeColor: "#0b0b0b",
 };
 
 export default function RootLayout({
@@ -29,7 +36,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={`${GeistSans.variable} ${GeistMono.variable} m-0 text-[15px] leading-[1.6]`}>
+            <body className={`${BricolageGrotesque.variable} ${GeistMono.variable} m-0 text-[15px] leading-[1.6]`}>
                 <a
                     className="fixed top-3 left-3 z-30 -translate-y-[160%] rounded-[4px] bg-ink px-3 py-2 text-xs text-button-ink transition-transform focus:translate-y-0"
                     href="#main-content"
