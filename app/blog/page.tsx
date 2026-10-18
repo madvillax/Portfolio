@@ -24,7 +24,7 @@ export default function BlogPage() {
             </header>
             <section className="blog-index" aria-label="Blog posts">
                 <article>
-                    <Link className="blog-entry group" href="/blog/how-do-i-get-my-hands-dirty-with-rag-applications-part-1">
+                    <Link className="blog-entry group" href="/blog/blog1">
                         <div className="blog-entry-meta"><span>AI Engineering</span><span>RAG / Part 1</span></div>
                         <div>
                             <h2>How do I get my hands dirty with RAG applications?</h2>
