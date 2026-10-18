@@ -68,7 +68,13 @@ export default function Home() {
                 </div>
 
                 <article className="grid grid-cols-[112px_minmax(0,1fr)] items-start gap-6 border-t border-line pt-[18px] max-[760px]:grid-cols-1 max-[760px]:gap-3">
-                    <p className="m-0 font-mono text-[10px] font-semibold tracking-[0.08em] text-faint uppercase">Frontend</p>
+                    <Image
+                        className="size-20 object-contain max-[760px]:size-16"
+                        src="/moonshift-icon-white.svg"
+                        alt="Moonshift logo"
+                        width={80}
+                        height={80}
+                    />
                     <div>
                         <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2">
                             <h3 className="m-0 font-sans text-lg leading-[1.2] font-semibold tracking-[-0.03em]">Frontend Developer</h3>
