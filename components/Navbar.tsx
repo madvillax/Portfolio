@@ -26,6 +26,7 @@ export default function Navbar() {
                             <li><Link className="text-[11px] font-semibold text-muted no-underline transition-colors hover:text-ink" href="/#work">Work</Link></li>
                             <li><Link className="text-[11px] font-semibold text-muted no-underline transition-colors hover:text-ink" href="/#experience">Experience</Link></li>
                             <li><Link className="text-[11px] font-semibold text-muted no-underline transition-colors hover:text-ink" href="/projects">Projects</Link></li>
+                            <li><Link className="text-[11px] font-semibold text-muted no-underline transition-colors hover:text-ink" href="/blog">Blog</Link></li>
                             <li><Link className="text-[11px] font-semibold text-muted no-underline transition-colors hover:text-ink" href="/#contact">Contact</Link></li>
                         </ul>
                     </nav>
