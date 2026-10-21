@@ -27,6 +27,57 @@
     --strong-line: #3a3a3a;
     --button-ink: #131313;
     --status: #35c785;
+    --prose: #c4c4c0;
+    --project-link: #ffd54a;
+    --project-link-hover: #ffe894;
+    --contribution-0: #242424;
+    --contribution-1: #0e4429;
+    --contribution-2: #006d32;
+    --contribution-3: #26a641;
+    --contribution-4: #39d353;
+}
+
+:root[data-theme="light"] {
+    color-scheme: light;
+    --canvas: #fafafa;
+    --surface: #fafafa;
+    --surface-soft: #eeeeec;
+    --ink: #20201e;
+    --muted: #595956;
+    --faint: #686864;
+    --line: #dededb;
+    --strong-line: #bcbcb7;
+    --button-ink: #fafafa;
+    --status: #16804e;
+    --prose: #454542;
+    --project-link: #866000;
+    --project-link-hover: #604400;
+    --contribution-0: #e5e5e2;
+    --contribution-1: #aceebb;
+    --contribution-2: #4ac26b;
+    --contribution-3: #2da44e;
+    --contribution-4: #116329;
+}
+
+.theme-toggle__moon,
+:root[data-theme="light"] .theme-toggle__sun {
+    display: none;
+}
+
+:root[data-theme="light"] .theme-toggle__moon {
+    display: block;
+}
+
+:root[data-theme="light"] .theme-invert {
+    filter: invert(1);
+}
+
+.social-logo--mono {
+    color: #fff;
+}
+
+:root[data-theme="light"] .social-logo--mono {
+    color: #000;
 }
 
 @layer base {
@@ -374,7 +425,7 @@
 }
 .blog-toc a:hover { color: var(--ink); text-decoration: underline; }
 .blog-prose { min-width: 0; font-size: 17px; line-height: 1.85; }
-.blog-prose p { margin: 0 0 24px; color: #c4c4c0; }
+.blog-prose p { margin: 0 0 24px; color: var(--prose); }
 .blog-prose h2 {
     margin: 52px 0 20px;
     font-size: 28px;
@@ -385,7 +436,7 @@
 }
 .blog-prose h2:first-child { margin-top: 0; }
 .blog-prose h3 { margin: 32px 0 14px; font-size: 20px; font-weight: 500; }
-.blog-prose ol, .blog-prose ul { padding-left: 24px; color: #c4c4c0; }
+.blog-prose ol, .blog-prose ul { padding-left: 24px; color: var(--prose); }
 .blog-prose ul { list-style: disc outside; }
 .blog-prose ul > li::marker { color: var(--ink); font-size: 1em; }
 .blog-prose ol { list-style-type: decimal; }
@@ -431,12 +482,12 @@
 }
 
 .blog-prose a.blog-project-link {
-    color: #ffd54a;
+    color: var(--project-link);
     text-decoration-color: currentColor;
     text-decoration-thickness: 2px;
     text-underline-offset: 4px;
 }
 
 .blog-prose a.blog-project-link:hover {
-    color: #ffe894;
+    color: var(--project-link-hover);
 }

@@ -13,7 +13,7 @@ type CalendarState =
     | { status: "ready"; contributions: Contribution[]; total: number };
 
 const username = "madvillax";
-const colors = ["#242424", "#0e4429", "#006d32", "#26a641", "#39d353"];
+const colors = Array.from({ length: 5 }, (_, level) => `var(--contribution-${level})`);
 const dateFormatter = new Intl.DateTimeFormat("en", {
     month: "long",
     day: "numeric",

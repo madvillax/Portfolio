@@ -52,8 +52,8 @@ type FooterProps = {
 export default function Footer({ wordmarkColor = "#1C6146" }: FooterProps) {
     return (
         <footer className="border-t border-line bg-surface text-[#241217]">
-            <div className="overflow-hidden rounded-l-[clamp(140px,19vw,270px)] bg-[#f4b8c8] max-[760px]:rounded-l-[72px]">
-                <div className="pr-9 pl-[clamp(72px,8vw,112px)] pt-[58px] max-[760px]:pr-5 max-[760px]:pl-9 max-[760px]:pt-12">
+            <div className="overflow-hidden rounded-l-[clamp(120px,16vw,220px)] bg-[#f4b8c8] max-[760px]:rounded-l-[64px]">
+                <div className="pr-9 pl-[clamp(72px,8vw,112px)] pt-9 max-[760px]:pr-5 max-[760px]:pl-9 max-[760px]:pt-7">
                     <div className="grid grid-cols-[180px_minmax(0,680px)] items-start justify-between gap-10 max-[900px]:grid-cols-[140px_minmax(0,1fr)] max-[760px]:grid-cols-1">
                         <nav className="max-w-[180px]" aria-label="Footer navigation">
                             <ul className="m-0 grid list-none gap-0.5 p-0">
@@ -119,9 +119,9 @@ export default function Footer({ wordmarkColor = "#1C6146" }: FooterProps) {
                         </div>
                     </div>
 
-                    <div className="mt-[clamp(40px,6vw,82px)] flex justify-end pb-6" aria-hidden="true">
+                    <div className="mt-[clamp(20px,3vw,40px)] flex justify-end pb-4" aria-hidden="true">
                         <p
-                            className="m-0 font-sans text-[clamp(104px,21vw,300px)] leading-[0.7] font-black tracking-[-0.105em] whitespace-nowrap"
+                            className="m-0 font-sans text-[clamp(96px,19vw,260px)] leading-[0.7] font-black tracking-[-0.105em] whitespace-nowrap"
                             style={{ color: wordmarkColor }}
                         >
                             mohit

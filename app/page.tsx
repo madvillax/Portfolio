@@ -15,10 +15,10 @@ const stack = [
 ];
 
 const socialLinks = [
-    { label: "GitHub", href: "https://github.com/madvillax", icon: GithubLogo },
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/mohit-sharma-432939271", icon: LinkedinLogo },
-    { label: "X", href: "https://x.com/madvillax", icon: XLogo },
-    { label: "Email", href: "mailto:mohit.sharma80805@gmail.com", icon: EnvelopeSimple },
+    { label: "Email", href: "mailto:mohit.sharma80805@gmail.com", icon: EnvelopeSimple, className: "text-ink" },
+    { label: "GitHub", href: "https://github.com/madvillax", icon: GithubLogo, className: "social-logo--mono" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/mohit-sharma-432939271", icon: LinkedinLogo, className: "text-[#0a66c2]" },
+    { label: "X", href: "https://x.com/madvillax", icon: XLogo, className: "social-logo--mono" },
 ];
 
 export default function Home() {
@@ -48,10 +48,15 @@ export default function Home() {
                             href={link.href}
                             target={link.href.startsWith("http") ? "_blank" : undefined}
                             rel={link.href.startsWith("http") ? "noreferrer" : undefined}
-                            className="inline-flex min-h-10 items-center gap-2 rounded-md border border-line bg-surface px-3 text-[11px] font-medium text-muted no-underline transition-[background-color,border-color,color] hover:border-strong-line hover:bg-surface-soft hover:text-ink active:scale-[0.98] motion-reduce:transition-none"
+                            aria-label={link.label}
+                            title={link.label}
+                            className={`inline-flex size-12 items-center justify-center rounded-[10px] border border-line bg-surface no-underline transition-[background-color,border-color,transform] hover:border-strong-line hover:bg-surface-soft active:scale-[0.96] motion-reduce:transition-none ${link.className}`}
                         >
-                            <link.icon size={15} weight="regular" aria-hidden="true" />
-                            {link.label}
+                            {link.label === "GitHub" ? (
+                                <span className="size-[26px] bg-current [mask:url('/github-mark.svg')_center/contain_no-repeat]" aria-hidden="true" />
+                            ) : (
+                                <link.icon size={26} weight={link.label === "LinkedIn" ? "fill" : "regular"} aria-hidden="true" />
+                            )}
                         </a>
                     ))}
                 </nav>
@@ -69,7 +74,7 @@ export default function Home() {
 
                 <article className="grid grid-cols-[112px_minmax(0,1fr)] items-start gap-6 border-t border-line pt-[18px] max-[760px]:grid-cols-1 max-[760px]:gap-3">
                     <Image
-                        className="size-20 object-contain max-[760px]:size-16"
+                        className="theme-invert size-20 object-contain max-[760px]:size-16"
                         src="/moonshift-icon-white.svg"
                         alt="Moonshift logo"
                         width={80}
@@ -80,7 +85,7 @@ export default function Home() {
                             <h3 className="m-0 font-sans text-lg leading-[1.2] font-semibold tracking-[-0.03em]">Frontend Developer</h3>
                             <a className="inline-flex items-center gap-2 text-[11px] font-bold text-muted no-underline transition-colors hover:text-ink" href="https://moonshift.io/" target="_blank" rel="noreferrer">
                                 <span className="grid size-6 place-items-center rounded-[3px] border border-line bg-surface-soft p-1" aria-hidden="true">
-                                    <Image className="size-full object-contain" src="/moonshift-icon-white.svg" alt="" width={24} height={24} />
+                                    <Image className="theme-invert size-full object-contain" src="/moonshift-icon-white.svg" alt="" width={24} height={24} />
                                 </span>
                                 <span>Moonshift</span><span className="text-faint" aria-hidden="true">↗</span>
                             </a>
