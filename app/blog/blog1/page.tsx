@@ -32,7 +32,7 @@ export default function RagArticlePage() {
                 <p className="blog-eyebrow">RAG / Part 1</p>
                 <h1 className="blog-title">How do I get my hands dirty with RAG applications?</h1>
                 <p className="blog-deck">Understanding the pieces before putting them together.</p>
-                <p className="blog-byline">By Mohit Sharma <span aria-hidden="true">/</span> Part 1</p>
+                <p className="blog-byline">By Mohit Sharma <span aria-hidden="true">/</span> Part 1 <span aria-hidden="true">/</span> <time dateTime="2026-10">Oct 2026</time></p>
             </header>
             <div className="blog-reading-layout">
                 <aside className="blog-toc">

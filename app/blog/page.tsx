@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft } from "@phosphor-icons/react/dist/ssr/ArrowLeft";
-import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr/ArrowUpRight";
 
 export const metadata: Metadata = {
     title: "Blog | Mohit Sharma",
@@ -24,12 +23,11 @@ export default function BlogPage() {
             </header>
             <section className="blog-index" aria-label="Blog posts">
                 <article>
-                    <Link className="blog-entry group" href="/blog/blog1">
-                        <div className="blog-entry-meta"><span>AI Engineering</span><span>RAG / Part 1</span></div>
+                    <Link className="blog-entry" href="/blog/blog1">
+                        <time className="blog-entry-date" dateTime="2026-10">Oct 2026</time>
                         <div>
                             <h2>How do I get my hands dirty with RAG applications?</h2>
                             <p>My journey into RAG: the core components, how indexing and querying work, and why I’m building Convo from scratch.</p>
-                            <span className="blog-read">Read article <ArrowUpRight size={16} aria-hidden="true" className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /></span>
                         </div>
                     </Link>
                 </article>
