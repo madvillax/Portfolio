@@ -68,6 +68,16 @@
     display: block;
 }
 
+html.theme-transition::view-transition-old(root),
+html.theme-transition::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+}
+
+html.theme-transition::view-transition-new(root) {
+    z-index: 1;
+}
+
 :root[data-theme="light"] .theme-invert {
     filter: invert(1);
 }
