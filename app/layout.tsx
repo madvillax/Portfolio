@@ -14,6 +14,10 @@ const BricolageGrotesque = localFont({
 
 export const metadata: Metadata = {
     title: "Mohit Sharma",
+    icons: {
+        icon: { url: "/profile.jpg", type: "image/jpeg" },
+        apple: "/profile.jpg",
+    },
     description:
         "Mohit Sharma builds useful AI products and thoughtful full-stack systems.",
     openGraph: {
