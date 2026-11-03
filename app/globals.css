@@ -173,8 +173,7 @@ html.theme-transition::view-transition-new(root) {
 }
 
 .sidebar-nav__link:hover,
-.sidebar-nav__link:focus-visible,
-.sidebar-nav__link[aria-current] {
+.sidebar-nav__link:focus-visible {
     color: var(--ink);
 }
 

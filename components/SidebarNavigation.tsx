@@ -43,7 +43,7 @@ export default function SidebarNavigation() {
     const activeIndex = links.findIndex((link) => pathname === "/"
         ? link.href === `/${selectedHash}` && selectedHash !== ""
         : !link.href.includes("#") && (pathname === link.href || pathname.startsWith(`${link.href}/`)));
-    const highlightedIndex = hovered ?? focused ?? (activeIndex >= 0 ? activeIndex : null);
+    const highlightedIndex = hovered ?? focused;
 
     useEffect(() => {
         window.dispatchEvent(new Event("portfolio-navigation"));
@@ -110,8 +110,12 @@ export default function SidebarNavigation() {
                             className="sidebar-nav__link"
                             href={link.href}
                             aria-current={activeIndex === index ? (link.href.includes("#") ? "location" : "page") : undefined}
-                            onMouseEnter={() => setHovered(index)}
-                            onFocus={() => setFocused(index)}
+                            onMouseEnter={() => {
+                                if (window.matchMedia("(hover: hover)").matches) setHovered(index);
+                            }}
+                            onFocus={(event) => {
+                                if (event.currentTarget.matches(":focus-visible")) setFocused(index);
+                            }}
                             onBlur={() => setFocused(null)}
                             onClick={() => {
                                 const nextHash = link.href.startsWith("/#") ? link.href.slice(1) : "";
