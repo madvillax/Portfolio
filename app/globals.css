@@ -178,11 +178,98 @@ html.theme-transition::view-transition-new(root) {
     color: var(--ink);
 }
 
+.sidebar-dinosaur {
+    position: relative;
+    width: 100%;
+    height: 112px;
+    flex: none;
+    overflow: hidden;
+    margin-top: 32px;
+    margin-bottom: 28px;
+    color: var(--muted);
+}
+
+.sidebar-dinosaur__runner,
+.sidebar-dinosaur__cactus,
+.sidebar-dinosaur__cloud {
+    position: absolute;
+    image-rendering: pixelated;
+    opacity: 0.75;
+    filter: invert(1);
+}
+
+:root[data-theme="light"] .sidebar-dinosaur__runner,
+:root[data-theme="light"] .sidebar-dinosaur__cactus,
+:root[data-theme="light"] .sidebar-dinosaur__cloud {
+    filter: none;
+}
+
+.sidebar-dinosaur__runner {
+    bottom: 12px;
+    left: 8px;
+    width: 44px;
+    height: 47px;
+    animation: sidebar-dinosaur-jump 3.2s infinite;
+}
+
+.sidebar-dinosaur__sprite {
+    width: 44px;
+    height: 47px;
+    background: url("/dino/100-offline-trex.png") -88px 0 no-repeat;
+    animation: sidebar-dinosaur-run 120ms steps(1) infinite;
+}
+
+.sidebar-dinosaur__cactus {
+    bottom: 12px;
+    left: 100%;
+    width: 17px;
+    height: 35px;
+    background: url("/dino/100-obstacle-small-sprite.png") 0 0 no-repeat;
+    animation: sidebar-dinosaur-cactus 3.2s linear infinite;
+}
+
+.sidebar-dinosaur__cloud {
+    top: 8px;
+    right: 18px;
+    width: 46px;
+    height: 14px;
+    background: url("/dino/100-cloud.png") center no-repeat;
+    opacity: 0.38;
+    filter: brightness(0) invert(1);
+}
+
+:root[data-theme="light"] .sidebar-dinosaur__cloud {
+    filter: brightness(0);
+}
+
+.sidebar-dinosaur__ground {
+    position: absolute;
+    right: 0;
+    bottom: 11px;
+    left: 0;
+    border-top: 1px solid currentColor;
+    opacity: 0.6;
+}
+
+@keyframes sidebar-dinosaur-run {
+    50% { background-position: -132px 0; }
+}
+
+@keyframes sidebar-dinosaur-jump {
+    0%, 48%, 86%, 100% { transform: translateY(0); }
+    61%, 72% { transform: translateY(-40px); }
+}
+
+@keyframes sidebar-dinosaur-cactus {
+    to { transform: translateX(-230px); }
+}
+
 @media (max-width: 760px) {
     .sidebar-nav { width: auto; min-width: 0; }
     .sidebar-nav__list { flex-direction: row; gap: 0; }
     .sidebar-nav__link { min-height: 36px; padding: 0 5px; font-size: 11px; }
     .sidebar-nav__indicator { border-radius: 8px; }
+    .sidebar-dinosaur { display: none; }
 }
 
 @media (max-width: 390px) {
@@ -370,6 +457,14 @@ html.theme-transition::view-transition-new(root) {
 }
 
 @media (prefers-reduced-motion: reduce) {
+    .sidebar-dinosaur__runner,
+    .sidebar-dinosaur__sprite,
+    .sidebar-dinosaur__cactus {
+        animation: none;
+    }
+
+    .sidebar-dinosaur__cactus { left: auto; right: 24px; }
+
     .project-card__image img {
         transform: none !important;
     }

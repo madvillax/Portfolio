@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import ThemeToggle from "@/components/ThemeToggle";
 import SidebarNavigation from "@/components/SidebarNavigation";
+import SidebarDinosaur from "@/components/SidebarDinosaur";
 
 export default function Navbar() {
     return (
@@ -26,6 +27,7 @@ export default function Navbar() {
                     <SidebarNavigation />
                     <div className="mt-8 max-[760px]:mt-0"><ThemeToggle /></div>
                 </div>
+                <SidebarDinosaur />
             </div>
         </header>
     );
