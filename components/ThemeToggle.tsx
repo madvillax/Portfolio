@@ -80,7 +80,7 @@ export default function ThemeToggle() {
     return (
         <button
             type="button"
-            className="inline-flex size-11 shrink-0 cursor-pointer items-center justify-center rounded-md border border-line bg-surface text-muted transition-colors hover:border-strong-line hover:bg-surface-soft hover:text-ink"
+            className="inline-flex size-11 shrink-0 cursor-pointer items-center justify-center rounded-full border border-line bg-surface text-muted transition-colors hover:border-strong-line hover:bg-surface-soft hover:text-ink"
             aria-label="Light mode"
             aria-pressed={isLight}
             title={isLight ? "Switch to dark mode" : "Switch to light mode"}
