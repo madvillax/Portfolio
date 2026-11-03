@@ -63,10 +63,12 @@ export default function RootLayout({
                 >
                     Skip to content
                 </a>
-                <div className="mx-[clamp(32px,14vw,210px)] min-h-dvh border-x border-line bg-surface max-[760px]:mx-0 max-[760px]:border-x-0">
+                <div className="mx-auto grid min-h-dvh max-w-[1500px] grid-cols-[240px_minmax(0,1fr)] border-x border-line bg-surface max-[760px]:grid-cols-1 max-[760px]:border-x-0">
                     <Navbar />
-                    <main id="main-content">{children}</main>
-                    <Footer />
+                    <div className="min-w-0">
+                        <main id="main-content">{children}</main>
+                        <Footer />
+                    </div>
                 </div>
             </body>
         </html>
