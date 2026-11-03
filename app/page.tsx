@@ -6,13 +6,7 @@ import { LinkedinLogo } from "@phosphor-icons/react/dist/ssr/LinkedinLogo";
 import { XLogo } from "@phosphor-icons/react/dist/ssr/XLogo";
 import ProjectsSection from "@/components/ProjectsSection";
 import GitHubContributions from "@/components/GitHubContributions";
-
-const stack = [
-    { label: "Core", tools: "TypeScript, Python, React, Next.js, Redux" },
-    { label: "Backend", tools: "Bun.js, Node.js, FastAPI, SQLite, Turso, Drizzle, Postgres" },
-    { label: "AI systems", tools: "Vercel AI SDK, Trigger.dev, Vercel eve, mastra" },
-    { label: "Interface", tools: "Tailwind CSS, base-ui," },
-];
+import WorkingStack from "@/components/WorkingStack";
 
 const socialLinks = [
     { label: "Email", href: "mailto:mohit.sharma80805@gmail.com", icon: EnvelopeSimple, className: "text-ink" },
@@ -102,23 +96,7 @@ export default function Home() {
 
             <ProjectsSection />
 
-            <section className="border-b border-line px-9 py-[42px] max-[760px]:px-5" aria-labelledby="stack-title">
-                <div className="mb-[26px] grid grid-cols-[32px_minmax(0,1fr)] items-start gap-[13px]">
-                    <span className="grid size-8 place-items-center rounded-[2px] border border-line bg-surface-soft font-sans text-[13px]" aria-hidden="true">+</span>
-                    <div>
-                        <h2 className="m-0 font-sans text-[17px] leading-[1.25] font-semibold tracking-[-0.03em]" id="stack-title">Working stack</h2>
-                        <p className="mt-1 mb-0 text-[11px] text-muted">Tools I use to move from idea to shipped product.</p>
-                    </div>
-                </div>
-                <dl className="m-0 grid grid-cols-2 border-t border-l border-line max-[760px]:grid-cols-1">
-                    {stack.map((group) => (
-                        <div className="min-h-[90px] border-r border-b border-line p-4" key={group.label}>
-                            <dt className="text-[9px] font-bold tracking-[0.06em] text-faint uppercase">{group.label}</dt>
-                            <dd className="mt-[11px] mb-0 text-[11px] leading-[1.55] text-muted">{group.tools}</dd>
-                        </div>
-                    ))}
-                </dl>
-            </section>
+            <WorkingStack />
 
             <section className="border-b border-line px-9 py-[42px] max-[760px]:px-5" id="contact" aria-labelledby="contact-title">
                 <p className="mt-0 mb-[9px] text-[9px] font-bold tracking-[0.08em] text-faint uppercase">Have a project in mind?</p>
