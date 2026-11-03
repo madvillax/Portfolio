@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { preload } from "react-dom";
 
 type Contribution = {
     date: string;
@@ -13,6 +14,9 @@ type CalendarState =
     | { status: "ready"; contributions: Contribution[]; total: number };
 
 const username = "madvillax";
+const contributionsUrl = `https://github-contributions-api.jogruber.de/v4/${username}?y=last`;
+const cacheKey = `github-contributions:${username}:v1`;
+const cacheMaxAge = 24 * 60 * 60 * 1000;
 const colors = Array.from({ length: 5 }, (_, level) => `var(--contribution-${level})`);
 const dateFormatter = new Intl.DateTimeFormat("en", {
     month: "long",
@@ -21,6 +25,26 @@ const dateFormatter = new Intl.DateTimeFormat("en", {
     timeZone: "UTC",
 });
 const monthFormatter = new Intl.DateTimeFormat("en", { month: "short", timeZone: "UTC" });
+
+function parseContributions(value: unknown): Contribution[] | null {
+    if (!Array.isArray(value) || !value.length) return null;
+
+    const contributions: Contribution[] = [];
+    for (const day of value) {
+        if (typeof day !== "object" || day === null ||
+            typeof day.date !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(day.date) ||
+            !Number.isFinite(new Date(`${day.date}T00:00:00Z`).getTime()) ||
+            !Number.isInteger(day.count) || day.count < 0 ||
+            !Number.isInteger(day.level) || day.level < 0 || day.level > 4) return null;
+        contributions.push(day);
+    }
+
+    return contributions.sort((a, b) => a.date.localeCompare(b.date));
+}
+
+function readyState(contributions: Contribution[]): CalendarState {
+    return { status: "ready", contributions, total: contributions.reduce((sum, day) => sum + day.count, 0) };
+}
 
 function Calendar({ contributions, total }: { contributions: Contribution[]; total: number }) {
     const offset = new Date(`${contributions[0].date}T00:00:00Z`).getUTCDay();
@@ -60,6 +84,7 @@ function Calendar({ contributions, total }: { contributions: Contribution[]; tot
 }
 
 export default function GitHubContributions() {
+    preload(contributionsUrl, { as: "fetch", crossOrigin: "anonymous" });
     const [state, setState] = useState<CalendarState>({ status: "loading" });
     const [attempt, setAttempt] = useState(0);
 
@@ -67,29 +92,47 @@ export default function GitHubContributions() {
         const controller = new AbortController();
         let disposed = false;
         const timeout = window.setTimeout(() => controller.abort(), 15000);
+        let hasCachedData = false;
+
+        try {
+            const stored = localStorage.getItem(cacheKey);
+            if (stored) {
+                const cached: unknown = JSON.parse(stored);
+                if (typeof cached === "object" && cached !== null && "savedAt" in cached && "contributions" in cached &&
+                    typeof cached.savedAt === "number" && cached.savedAt <= Date.now() && Date.now() - cached.savedAt < cacheMaxAge) {
+                    const contributions = parseContributions(cached.contributions);
+                    if (contributions) {
+                        hasCachedData = true;
+                        setState(readyState(contributions));
+                    }
+                }
+            }
+        } catch {
+            // Continue with the network request if storage is unavailable or invalid.
+        }
 
         async function loadContributions() {
             try {
                 // Public contribution data; no token or server route is required.
-                const response = await fetch(`https://github-contributions-api.jogruber.de/v4/${username}?y=last`, { signal: controller.signal });
+                const response = await fetch(contributionsUrl, { signal: controller.signal });
                 if (!response.ok) throw new Error("Could not load contributions");
 
-                const data = await response.json();
-                if (!Array.isArray(data.contributions) || !data.contributions.length) throw new Error("No contribution data");
+                const data: unknown = await response.json();
+                const contributions = typeof data === "object" && data !== null && "contributions" in data
+                    ? parseContributions(data.contributions)
+                    : null;
+                if (!contributions) throw new Error("Invalid contribution data");
 
-                const contributions: Contribution[] = data.contributions;
-                if (!contributions.every((day) =>
-                    typeof day.date === "string" && /^\d{4}-\d{2}-\d{2}$/.test(day.date) &&
-                    Number.isFinite(new Date(`${day.date}T00:00:00Z`).getTime()) &&
-                    Number.isInteger(day.count) && day.count >= 0 &&
-                    Number.isInteger(day.level) && day.level >= 0 && day.level <= 4
-                )) throw new Error("Invalid contribution data");
-
-                contributions.sort((a, b) => a.date.localeCompare(b.date));
-                const total = contributions.reduce((sum, day) => sum + day.count, 0);
-                if (!disposed) setState({ status: "ready", contributions, total });
+                if (!disposed) {
+                    setState(readyState(contributions));
+                    try {
+                        localStorage.setItem(cacheKey, JSON.stringify({ savedAt: Date.now(), contributions }));
+                    } catch {
+                        // The graph remains usable when storage is unavailable.
+                    }
+                }
             } catch {
-                if (!disposed) setState({ status: "error" });
+                if (!disposed && !hasCachedData) setState({ status: "error" });
             } finally {
                 window.clearTimeout(timeout);
             }
