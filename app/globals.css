@@ -92,6 +92,7 @@ html.theme-transition::view-transition-new(root) {
 
 @layer base {
     html {
+        overscroll-behavior-y: none;
         scroll-behavior: smooth;
         -webkit-text-size-adjust: 100%;
     }
