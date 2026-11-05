@@ -11,7 +11,7 @@
     --color-strong-line: var(--strong-line);
     --color-button-ink: var(--button-ink);
     --color-status: var(--status);
-    --font-sans: var(--font-bricolage-grotesque);
+    --font-sans: var(--font-montserrat);
     --font-mono: var(--font-geist-mono);
 }
 
@@ -101,7 +101,7 @@ html.theme-transition::view-transition-new(root) {
         min-height: 100dvh;
         background: var(--canvas);
         color: var(--ink);
-        font-family: var(--font-bricolage-grotesque), ui-sans-serif, system-ui, sans-serif;
+        font-family: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
         text-rendering: optimizeLegibility;
         -webkit-font-smoothing: antialiased;
     }

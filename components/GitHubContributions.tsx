@@ -147,12 +147,12 @@ export default function GitHubContributions() {
     }, [attempt]);
 
     return (
-        <section className="mt-7 border-t border-line pt-5" aria-labelledby="github-activity-title">
-            <div className="mb-4 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+        <section className="mt-6 border-t border-line pt-4" aria-labelledby="github-activity-title">
+            <div className="mb-3 flex max-w-[780px] flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                 <h2 id="github-activity-title" className="m-0 text-[11px] font-semibold">GitHub contributions</h2>
                 <a className="text-[10px] font-semibold text-muted no-underline transition-colors hover:text-ink" href={`https://github.com/${username}`} target="_blank" rel="noreferrer">@{username}<span className="ml-1 text-faint" aria-hidden="true">↗</span></a>
             </div>
-            <div className="min-h-[127px]">
+            <div className="min-h-[127px] max-w-[780px]">
                 {state.status === "ready" ? <Calendar contributions={state.contributions} total={state.total} /> : (
                     <div className="flex min-h-[127px] flex-wrap content-center items-center gap-3 text-[11px] text-muted">
                         <p className="m-0" role="status">{state.status === "loading" ? "Loading GitHub activity…" : "GitHub activity is temporarily unavailable."}</p>
@@ -165,7 +165,7 @@ export default function GitHubContributions() {
                     </div>
                 )}
             </div>
-            <div className="mt-2 flex flex-wrap items-center justify-between gap-x-4 gap-y-2 text-[9px] text-faint">
+            <div className="mt-1 flex max-w-[780px] flex-wrap items-center justify-between gap-x-4 gap-y-2 text-[9px] text-faint">
                 <span role="status">{state.status === "ready" ? `${state.total.toLocaleString("en-US")} contributions in the last year` : "Activity over the last year"}</span>
                 <div className="flex items-center gap-1.5" aria-label="Contribution color scale, from less to more">
                     <span>Less</span>
