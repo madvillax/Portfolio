@@ -47,7 +47,7 @@ export default function Home() {
                             rel={link.href.startsWith("http") ? "noreferrer" : undefined}
                             aria-label={link.label}
                             title={link.label}
-                            className={`inline-flex size-11 items-center justify-center rounded-lg border border-line bg-surface no-underline transition-[background-color,border-color,transform] duration-200 hover:-translate-y-0.5 hover:border-strong-line hover:bg-surface-soft active:scale-[0.96] motion-reduce:transition-none ${link.className}`}
+                            className={`inline-flex size-11 items-center justify-center rounded-lg border border-line bg-surface no-underline transition-[background-color,border-color,translate,scale] duration-200 hover:-translate-y-0.5 hover:border-strong-line hover:bg-surface-soft active:scale-[0.96] motion-reduce:transition-none ${link.className}`}
                         >
                             {link.label === "GitHub" ? (
                                 <span className="size-[22px] bg-current [mask:url('/github-mark.svg')_center/contain_no-repeat]" aria-hidden="true" />
