@@ -32,16 +32,16 @@ export function ProjectList({ items }: { items: Project[] }) {
 
 export default function ProjectsSection() {
     return (
-        <section className="border-b border-line px-9 py-12 max-[760px]:px-5 max-[760px]:py-9" id="work" aria-labelledby="selected-projects">
-            <div className="mb-8 flex flex-wrap items-end justify-between gap-x-6 gap-y-5">
+        <section className="section reveal" id="work" aria-labelledby="selected-projects">
+            <div className="mb-7 flex flex-wrap items-end justify-between gap-x-6 gap-y-5">
                 <div>
-                    <div className="flex items-center gap-3">
-                        <h2 className="m-0 font-sans text-[26px] leading-tight font-semibold tracking-[-0.045em]" id="selected-projects">Projects</h2>
-                        <span className="rounded border border-line px-1.5 py-0.5 font-mono text-[10px] leading-none text-muted" aria-label={`${homepageProjects.length} projects`}>{homepageProjects.length}</span>
+                    <div className="flex items-center gap-2.5">
+                        <h2 className="section-title" id="selected-projects">Projects</h2>
+                        <span className="rounded-full border border-line px-2 py-0.5 font-mono text-[11px] leading-[1.4] text-muted" aria-label={`${homepageProjects.length} projects`}>{homepageProjects.length}</span>
                     </div>
-                    <p className="mt-2 mb-0 max-w-[500px] text-[12px] leading-relaxed text-muted">AI products, developer tools, and interfaces built around real problems.</p>
+                    <p className="section-lede">AI products, developer tools, and interfaces built around real problems.</p>
                 </div>
-                <Link className="inline-flex min-h-9 items-center gap-2 rounded-md border border-strong-line bg-surface px-3 text-[11px] font-medium text-ink no-underline transition-colors hover:bg-surface-soft" href="/projects">All projects <ArrowRight size={14} aria-hidden="true" /></Link>
+                <Link className="btn" href="/projects">All projects <ArrowRight className="btn__arrow btn__arrow--right" size={14} aria-hidden="true" /></Link>
             </div>
             <ProjectList items={homepageProjects} />
         </section>

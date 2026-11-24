@@ -19,7 +19,7 @@ export default function Navbar() {
                     />
                     <span className="grid leading-[1.25]">
                         <strong className="font-sans text-2xl font-semibold tracking-[-0.04em]">Mohit Sharma</strong>
-                        <span className="mt-1 text-[11px] tracking-[0.02em] text-muted">AI Full-stack Developer</span>
+                        <span className="mt-1 text-[12px] tracking-[0.01em] text-muted">AI Full-stack Developer</span>
                     </span>
                 </Link>
 

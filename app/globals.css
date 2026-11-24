@@ -126,6 +126,122 @@ html.theme-transition::view-transition-new(root) {
     }
 }
 
+@layer components {
+    /* Shared button primitive: one radius, one height, one type size across the site. */
+    .btn {
+        display: inline-flex;
+        min-height: 40px;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 0 16px;
+        border: 1px solid var(--strong-line);
+        border-radius: 6px;
+        background: var(--surface);
+        color: var(--ink);
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 1;
+        white-space: nowrap;
+        text-decoration: none;
+        transition: background-color 160ms ease, border-color 160ms ease, opacity 160ms ease, transform 160ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .btn:hover {
+        border-color: var(--muted);
+        background: var(--surface-soft);
+    }
+
+    .btn:active {
+        transform: scale(0.97);
+    }
+
+    .btn--primary {
+        border-color: var(--ink);
+        background: var(--ink);
+        color: var(--button-ink);
+    }
+
+    .btn--primary:hover {
+        border-color: var(--ink);
+        background: var(--ink);
+        opacity: 0.86;
+    }
+
+    .btn__arrow {
+        transition: transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .btn:hover .btn__arrow {
+        transform: translate(2px, -2px);
+    }
+
+    .btn:hover .btn__arrow--right {
+        transform: translateX(3px);
+    }
+
+    /* Section headers share one scale so every block reads as the same site. */
+    .section {
+        padding: 56px 36px;
+        border-bottom: 1px solid var(--line);
+    }
+
+    .section-title {
+        margin: 0;
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 1.2;
+        letter-spacing: -0.04em;
+    }
+
+    .section-lede {
+        max-width: 56ch;
+        margin: 6px 0 0;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.55;
+    }
+
+    .eyebrow {
+        margin: 0 0 10px;
+        color: var(--faint);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+
+    @media (max-width: 760px) {
+        .section { padding: 40px 20px; }
+        .section-title { font-size: 22px; }
+    }
+}
+
+/* Motion: a short staggered load-in for the intro, and a gentle reveal as
+   later sections scroll into view. Both are skipped for reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+    .intro-rise {
+        animation: intro-rise 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+        animation-delay: calc(var(--i, 0) * 70ms);
+    }
+
+    @supports (animation-timeline: view()) {
+        .reveal {
+            animation: reveal-up linear both;
+            animation-timeline: view();
+            animation-range: entry 0% entry 45%;
+        }
+    }
+}
+
+@keyframes intro-rise {
+    from { opacity: 0; transform: translateY(12px); }
+}
+
+@keyframes reveal-up {
+    from { opacity: 0; transform: translateY(24px); }
+}
+
 /* A web approximation of a glass surface for the navigation highlight. */
 .sidebar-nav {
     position: relative;
@@ -330,7 +446,7 @@ html.theme-transition::view-transition-new(root) {
     margin: 0 0 9px;
     color: var(--muted);
     font-family: var(--font-geist-mono), monospace;
-    font-size: 10px;
+    font-size: 11px;
     line-height: 1.5;
 }
 
@@ -343,24 +459,29 @@ html.theme-transition::view-transition-new(root) {
 }
 
 .project-card__description {
-    max-width: 460px;
+    max-width: 52ch;
     margin: 12px 0 0;
     color: var(--muted);
-    font-size: 13px;
-    line-height: 1.65;
+    font-size: 14px;
+    line-height: 1.6;
 }
 
 .project-card__stack {
     display: flex;
     flex-wrap: wrap;
-    column-gap: 14px;
-    row-gap: 6px;
+    gap: 6px;
     margin: 20px 0 0;
     padding: 0;
     list-style: none;
     color: var(--muted);
-    font-size: 10px;
+    font-size: 11px;
     line-height: 1.5;
+}
+
+.project-card__stack li {
+    padding: 2px 8px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
 }
 
 .project-card__links {
@@ -376,12 +497,12 @@ html.theme-transition::view-transition-new(root) {
 
 .project-card__link {
     display: inline-flex;
-    min-height: 28px;
+    min-height: 32px;
     align-items: center;
     gap: 7px;
     color: var(--ink);
-    font-size: 11px;
-    font-weight: 500;
+    font-size: 13px;
+    font-weight: 600;
     text-decoration: none;
     transition: color 180ms ease;
 }
@@ -414,7 +535,19 @@ html.theme-transition::view-transition-new(root) {
 }
 
 .project-card--lead .project-card__description {
-    font-size: 14px;
+    font-size: 15px;
+}
+
+.project-card__link svg {
+    transition: transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-card__link:hover svg {
+    transform: translate(2px, -2px);
+}
+
+.project-card__link--source:hover svg {
+    transform: none;
 }
 
 @media (hover: hover) and (pointer: fine) {
