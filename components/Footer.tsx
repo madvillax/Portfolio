@@ -16,7 +16,7 @@ const navigationLinks = [
 ];
 
 const footerLinkClass =
-    "w-fit text-[11px] leading-5 font-medium text-[#3b2029] no-underline transition-colors hover:text-[#170d10]";
+    "w-fit text-[13px] leading-6 font-medium text-[#3b2029] no-underline transition-colors hover:text-[#170d10]";
 
 const socialLinks = [
     {
